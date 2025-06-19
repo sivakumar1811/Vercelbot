@@ -87,8 +87,6 @@
             <input type="text" name="symptoms" placeholder="Enter symptoms (comma-separated)" size="60" required>
             <button type="submit">Get Advice</button>
         </form>
-
-        {% if result and not result.get("error") %}
         <div class="result">
             <h2>Recommendations</h2>
             <table>
@@ -104,22 +102,12 @@
 
             <div class="advice-section">
                 <h3>🛡️ Precautions</h3>
-                <p>
-                    {% for item in result["precautions"] %}
-                        • {{ item }}<br>
-                    {% endfor %}
-                </p>
+                
                 <h3>🍽️ Diet Recommendations</h3>
-                <p>
-                    {% for item in result["diet"] %}
-                        • {{ item }}<br>
-                    {% endfor %}
-                </p>
+               
             </div>
         </div>
-        {% elif result and result.get("error") %}
             <div class="error">{{ result["error"] }}</div>
-        {% endif %}
     </div>
 </body>
 </html>
